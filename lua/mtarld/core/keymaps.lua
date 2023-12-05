@@ -18,16 +18,5 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>b<TAB>", function ()
-  local buffers = require("mtarld.utils.buffers").get_buffers({ ignore_current_buffer = true })
-
-  table.sort(buffers, function(a, b)
-    return vim.fn.getbufinfo(a)[1].lastused > vim.fn.getbufinfo(b)[1].lastused
-  end)
-
-  local last_buffer = buffers[1];
-
-  if nil ~= last_buffer then
-    vim.cmd(string.format("b %s", last_buffer))
-  end
-end)
+vim.keymap.set("n", "<leader>b<TAB>", "<C-6>")
+vim.keymap.set("n", "<Esc>", ":noh <CR>")

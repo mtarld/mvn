@@ -5,7 +5,7 @@ return {
     {"<leader>gc", function()
       vim.ui.input({ prompt = 'Compare with (origin/main): ' }, function(input)
         local branch = input or "origin/main"
-        vim.cmd("Gvsplit " .. branch .. ":%")
+        vim.cmd("vert Git -p show " .. branch .. ":%")
       end)
     end},
     {"<leader>gb", function()

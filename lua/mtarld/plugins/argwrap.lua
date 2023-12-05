@@ -1,7 +1,7 @@
 return {
-    "FooSoft/vim-argwrap",
-    cmd = { "ArgWrap" },
-    config = function()
-        vim.keymap.set("n", "<leader>j", "<cmd> ArgWrap<CR>")
-    end,
+  "FooSoft/vim-argwrap",
+  cmd = { "ArgWrap" },
+  keys = {
+    {"<leader>j", "<cmd> ArgWrap<CR>"},
+  },
 }
