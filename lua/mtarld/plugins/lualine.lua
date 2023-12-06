@@ -25,7 +25,6 @@ return {
       },
     },
     extensions = {
-      "nvim-tree",
       "quickfix",
     },
   },

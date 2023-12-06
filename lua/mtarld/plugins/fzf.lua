@@ -8,7 +8,25 @@ return {
     local actions = require("fzf-lua.actions")
 
     require("fzf-lua").setup({
-      "fzf-native",
+      fzf_colors = {
+        ["fg"] = { "fg", "CursorLine" },
+        ["bg"] = { "bg", "Normal" },
+        ["hl"] = { "fg", "CursorLine" },
+        ["fg+"] = { "fg", "Normal" },
+        ["bg+"] = { "bg", "CursorLine" },
+        ["hl+"] = { "fg", "Normal" },
+        ["info"] = { "fg", "Comment" },
+        ["prompt"] = { "fg", "Normal" },
+        ["pointer"] = { "fg", "Exception" },
+        ["marker"] = { "fg", "Keyword" },
+        ["spinner"] = { "fg", "Comment" },
+        ["header"] = { "fg", "Comment" },
+        ["gutter"] = { "bg", "CursorLine" },
+      },
+      grep = {
+        -- override color=always
+        rg_opts = "--column --line-number --no-heading --color=never --smart-case --max-columns=4096 -e",
+      },
       keymap = {
         fzf = {
           ["ctrl-u"] = "half-page-up",
@@ -28,7 +46,6 @@ return {
         preview = {
           hidden = "hidden",
         },
-        height = 1,
       },
     })
   end,
@@ -43,9 +60,7 @@ return {
         vim.cmd("FzfLua lgrep_curbuf")
       end
     end},
-    {"<leader>ff", function ()
-      vim.cmd("FzfLua files cwd=" .. vim.fn.expand("%:p:h"))
-    end},
+    {"<leader>ff", "<cmd>FzfLua lsp_live_workspace_symbols <CR>"},
     {"<leader> ", "<cmd>FzfLua files <CR>"},
     {"<leader>bb", "<cmd>FzfLua buffers <CR>"},
     {"<leader>#", "<cmd>FzfLua grep_cWORD <CR>"},
@@ -53,6 +68,7 @@ return {
     {"<leader>,", "<cmd>FzfLua lsp_finder <CR>"},
     {"<leader>?", "<cmd>FzfLua lsp_document_diagnostics <CR>"},
     {"<leader>cc", "<cmd>FzfLua lsp_code_actions <CR>"},
-    {"<leader>ss", "<cmd>FzfLua lsp_live_workspace_symbols <CR>"},
+    {"<leader>ss", "<cmd>FzfLua lsp_document_symbols <CR>"},
+    {"<leader>rr", "<cmd>FzfLua live_grep_resume <CR>"},
   },
 }

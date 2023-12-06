@@ -23,6 +23,8 @@ vim.opt.scrolloff = 8
 
 vim.opt.wrap = false
 
+vim.o.termguicolors = true
+
 local yank_group = augroup("HighlightYank", {})
 
 autocmd('TextYankPost', {
@@ -30,7 +32,7 @@ autocmd('TextYankPost', {
   pattern = "*",
   callback = function()
     vim.highlight.on_yank({
-      higroup = "IncSearch",
+      higroup = "ColorColumn",
       timeout = 120,
     })
   end,
