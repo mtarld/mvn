@@ -3,7 +3,7 @@ return {
   dependencies = {
     {"nvim-treesitter/nvim-treesitter-textobjects"},
   },
-  cmd = { "BufEnter" },
+  event = { "BufEnter" },
   config = function()
     require('nvim-treesitter.configs').setup {
       ensure_installed = {

@@ -12,7 +12,7 @@ return {
     config = function()
         local lsp = require('lsp-zero')
 
-        lsp.on_attach(function(client, bufnr)
+        lsp.on_attach(function(_, bufnr)
             lsp.default_keymaps({buffer = bufnr})
         end)
 
@@ -69,5 +69,8 @@ return {
       {"K", function()
         vim.lsp.buf.hover()
       end},
+      {"<leader>R", function ()
+        vim.lsp.buf.rename()
+      end}
     },
 }

@@ -53,14 +53,12 @@ return {
   keys = {
     {"<leader>.", "<cmd>FzfLua live_grep <CR>"},
     {"<C-p>", "<cmd>FzfLua resume <CR>"},
-    {"<C-s>", function ()
-      if (vim.bo.filetype == "dirbuf") then
-        vim.cmd("FzfLua blines")
-      else
-        vim.cmd("FzfLua lgrep_curbuf")
-      end
+    {"<C-s>", "<cmd>FzfLua blines <CR>"},
+    {"<leader>ff", function ()
+      require('fzf-lua').files({
+        cwd = vim.fn.expand("%:p:h"),
+      })
     end},
-    {"<leader>ff", "<cmd>FzfLua lsp_live_workspace_symbols <CR>"},
     {"<leader> ", "<cmd>FzfLua files <CR>"},
     {"<leader>bb", "<cmd>FzfLua buffers <CR>"},
     {"<leader>#", "<cmd>FzfLua grep_cWORD <CR>"},
@@ -69,6 +67,7 @@ return {
     {"<leader>?", "<cmd>FzfLua lsp_document_diagnostics <CR>"},
     {"<leader>cc", "<cmd>FzfLua lsp_code_actions <CR>"},
     {"<leader>ss", "<cmd>FzfLua lsp_document_symbols <CR>"},
+    {"<leader>sS", "<cmd>FzfLua lsp_live_workspace_symbols <CR>"},
     {"<leader>rr", "<cmd>FzfLua live_grep_resume <CR>"},
   },
 }

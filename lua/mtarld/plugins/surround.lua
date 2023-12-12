@@ -1,4 +1,4 @@
 return {
   "tpope/vim-surround",
-  cmd = { "BufEnter" },
+  event = { "BufEnter" },
 }

@@ -28,6 +28,7 @@ return {
           FzfLuaBufFlagCur = { fg = colors.flamingo },
           FzfLuaBufFlagAlt = { fg = colors.flamingo },
           FzfLuaHeaderBind = { fg = colors.flamingo },
+          Todo = { bg = colors.mantle, fg = colors.surface2 },
         }
       end
     })

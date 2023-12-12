@@ -1,4 +1,4 @@
 return {
   "tpope/vim-sleuth",
-  cmd = { "BufEnter" },
+  event = { "BufEnter" },
 }
