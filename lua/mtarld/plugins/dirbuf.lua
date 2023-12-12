@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd("FileType", {
     -- map "Ctrl-/" to open file in a vertical split
     vim.keymap.set("n", "<C-_>", function()
       require("dirbuf").enter("vsplit")
-    end)
+    end, { buffer = true })
 
     -- map "." to live grep in current directory
     vim.keymap.set("n", ".", function()
@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("FileType", {
       end
 
       require("fzf-lua").live_grep({ cwd = cwd })
-    end)
+    end, { buffer = true })
   end,
 })
 

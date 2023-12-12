@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.keymap.set("n", "R", function()
       require("replacer").run({ rename_files = false })
-    end)
+    end, { buffer = true })
   end,
 })
 
