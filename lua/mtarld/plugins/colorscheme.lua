@@ -5,6 +5,7 @@ return {
   config = function()
     require("catppuccin").setup({
       flavour = "latte",
+      no_italic = true,
       integrations = {
         cmp = true,
         gitsigns = true,
@@ -29,6 +30,7 @@ return {
           FzfLuaBufFlagAlt = { fg = colors.flamingo },
           FzfLuaHeaderBind = { fg = colors.flamingo },
           Todo = { bg = colors.mantle, fg = colors.surface2 },
+          PmenuSel = { bg = colors.mantle },
         }
       end
     })
