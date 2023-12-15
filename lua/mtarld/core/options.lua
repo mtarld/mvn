@@ -2,6 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
 vim.opt.undofile = true
+vim.opt.swapfile = false
 
 vim.opt.relativenumber = true
 vim.opt.number = true
