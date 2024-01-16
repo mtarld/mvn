@@ -1,22 +1,30 @@
 vim.g.mapleader = " "
 
+-- quit neovim
 vim.keymap.set("n", "<leader>qq", ":xa! <CR>")
-vim.keymap.set("n", "<leader>fs", ":w <CR>")
-vim.keymap.set("n", "<leader>el", "<cmd>e #<1<CR>")
 
+-- save file
+vim.keymap.set("n", "<leader>fs", ":w <CR>")
+
+-- split window vertically
 vim.keymap.set("n", "<leader>/", function ()
   vim.cmd('vsp')
   vim.cmd('wincmd l')
 end)
+
+-- split window horizontally
 vim.keymap.set("n", "<leader>-", function ()
   vim.cmd('sp')
   vim.cmd('wincmd j')
 end)
+
+-- close window
 vim.keymap.set("n", "<leader>x", "<C-w>q")
+
+-- rotate windows
 vim.keymap.set("n", "<leader>r", "<C-w>r")
 
--- keep register when pasting
--- https://vi.stackexchange.com/a/39907
+-- keep register when pasting (https://vi.stackexchange.com/a/39907)
 vim.keymap.set("x", "p", "P", { silent = true })
 
 -- center view after moving verticaly
@@ -25,22 +33,26 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- switch to previous buffer
 vim.keymap.set("n", "<leader>b<TAB>", function ()
-  local buffers = vim.tbl_filter(function(b)
-    return 1 == vim.fn.buflisted(b) and b ~= vim.api.nvim_get_current_buf()
-  end, vim.api.nvim_list_bufs() or {})
-
-  table.sort(buffers, function(a, b)
-    return vim.fn.getbufinfo(a)[1].lastused > vim.fn.getbufinfo(b)[1].lastused
-  end)
-
-  local last_buffer = buffers[1]
-  if nil == last_buffer then
+  local previous_buffer = require("mtarld.core.buffer").previous_buffer()
+  if nil == previous_buffer then
     return
   end
 
-  vim.cmd(string.format("b %s", last_buffer))
+  vim.cmd("b " .. previous_buffer)
 end)
 
+-- remove search highlight on escape
 vim.keymap.set("n", "<Esc>", ":noh <CR>")
+
+-- toggle line wrap
 vim.keymap.set("n", "<leader>W", ":set wrap! <CR>")
+
+-- format PHP files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "php",
+  callback = function()
+    vim.keymap.set("n", "<leader>cs", require("mtarld.core.php-cs-fixer").format, { buffer = true })
+  end,
+})
