@@ -21,13 +21,21 @@ return {
     mason_lspconfig.setup({
       ensure_installed = {
         "lua_ls",
+        "psalm",
+        -- "phpactor" phpactor is installed manually
+        "eslint",
+        "tsserver",
+        "html",
+        "cssls",
+        "yamlls",
+        "jsonls",
+        "dockerls",
       },
       handlers = {
         lsp.default_setup,
       },
     })
 
-    lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
     lspconfig.phpactor.setup({
       require("cmp_nvim_lsp").default_capabilities()
     })

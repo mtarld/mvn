@@ -18,6 +18,7 @@ return {
         "markdown",
         "org",
         "php",
+        "phpdoc",
         "query",
         "twig",
         "vim",
@@ -35,37 +36,23 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
-            ["aA"] = "@attribute.outer",
-            ["iA"] = "@attribute.inner",
             ["af"] = "@function.outer",
             ["if"] = "@function.inner",
             ["ac"] = "@class.outer",
             ["ic"] = "@class.inner",
-            ["ia"] = "@parameter.inner",
-            ["aa"] = "@parameter.outer",
-            ["im"] = "@call.inner",
-            ["am"] = "@call.outer",
-            ["ax"] = "@comment.outer",
+            ["iP"] = "@parameter.inner",
+            ["aP"] = "@parameter.outer",
             ["iC"] = "@conditional.inner",
             ["aC"] = "@conditional.outer",
             ["iL"] = "@loop.inner",
             ["aL"] = "@loop.outer",
-            ["aS"] = "@statement.outer",
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]]"] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[["] = "@class.outer",
-            },
+            ["i/"] = "@comment.inner",
+            ["a/"] = "@comment.outer",
           },
           include_surrounding_whitespace = function(opts)
             local qs = opts.query_string
 
-            if     qs == '@function.inner' then return false
+            if qs == '@function.inner' then return false
             elseif qs == '@class.outer' then return false
             elseif qs == '@call.outer' then return false
             elseif qs == '@comment.outer' then return false
