@@ -69,5 +69,6 @@ return {
     {"<leader>ss", "<cmd>FzfLua lsp_document_symbols <CR>"},
     {"<leader>sS", "<cmd>FzfLua lsp_live_workspace_symbols <CR>"},
     {"<leader>rr", "<cmd>FzfLua live_grep_resume <CR>"},
+    {"<leader>pp", "<cmd>FzfLua registers <CR>"},
   },
 }

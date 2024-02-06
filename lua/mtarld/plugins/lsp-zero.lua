@@ -21,8 +21,7 @@ return {
     mason_lspconfig.setup({
       ensure_installed = {
         "lua_ls",
-        "psalm",
-        -- "phpactor" phpactor is installed manually
+        "phpactor",
         "eslint",
         "tsserver",
         "html",
