@@ -56,3 +56,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<leader>cs", require("mtarld.core.php-cs-fixer").format, { buffer = true })
   end,
 })
+
+-- Search and replace current position word
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- move selected lines up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
