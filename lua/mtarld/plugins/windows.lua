@@ -7,13 +7,11 @@ vim.api.nvim_create_autocmd("VimResized", {
 return {
   "anuvyklack/windows.nvim",
   dependencies = { "anuvyklack/middleclass" },
+  opts = {},
+  event = "VimResized",
   cmd = { "WindowsMaximize", "WindowsEqualize" },
-  event = { "VimResized" },
-  config = function()
-    require("windows").setup()
-  end,
   keys = {
-    {"<leader>m", "<cmd>WindowsMaximize <CR>" },
-    {"<leader>=", "<cmd>WindowsEqualize <CR>" },
+    { "<leader>m", "<CMD>WindowsMaximize<CR>" },
+    { "<leader>=", "<CMD>WindowsEqualize<CR>" },
   },
 }

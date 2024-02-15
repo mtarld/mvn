@@ -1,15 +1,11 @@
 return {
   "lewis6991/gitsigns.nvim",
-  config = function ()
-    require('gitsigns').setup()
-  end,
-  event = { "BufEnter" },
+  opts = {
+    current_line_blame = true,
+  },
+  event = "BufRead",
   keys = {
-    {"<leader>gr", function()
-      require("gitsigns").reset_hunk()
-    end},
-    {"<leader>gp", function()
-      require("gitsigns").preview_hunk()
-    end},
+    { "<leader>gr", "<CMD>Gitsigns reset_hunk<CR>" },
+    { "<leader>gp", "<CMD>Gitsigns preview_hunk<CR>" },
   },
 }

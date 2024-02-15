@@ -5,15 +5,10 @@ return {
     "sindrets/diffview.nvim",
     "ibhagwan/fzf-lua",
   },
-  kind = "vsplit",
-  config = function ()
-    require("neogit").setup({
-      kind = "replace",
-    })
-  end,
+  opts = {
+    kind = "replace",
+  },
   keys = {
-    {"<leader>gg", function()
-      require("neogit").open()
-    end},
+    { "<leader>gg", "<CMD>Neogit<CR>" },
   },
 }

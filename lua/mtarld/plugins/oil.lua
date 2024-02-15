@@ -3,7 +3,6 @@ vim.keymap.set("n", "-", ":Oil<CR>")
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "oil",
   callback = function()
-
     -- map ">" to live grep in current directory
     vim.keymap.set("n", ">", function()
       local oil = require("oil")
@@ -27,25 +26,20 @@ vim.api.nvim_create_autocmd("FileType", {
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function ()
-    require("oil").setup({
-      use_default_keymaps = false,
-      keymaps = {
-        ["<CR>"] = "actions.select",
-        ["<leader><CR>"] = "actions.select_vsplit",
-        ["<leader>p"] = "actions.preview",
-        ["<C-r>"] = "actions.refresh",
-      },
-      view_options = {
-        show_hidden = true,
-      },
-      buf_options = {
-        buflisted = true,
-        bufhidden = "hide",
-      },
-      lsp_rename_autosave = true,
-      skip_confirm_for_simple_edits = true,
-      prompt_save_on_select_new_entry = false,
-    })
-  end,
+  opts = {
+    use_default_keymaps = false,
+    keymaps = {
+      ["<CR>"] = "actions.select",
+      ["<leader><CR>"] = "actions.select_vsplit",
+      ["<leader>p"] = "actions.preview",
+      ["<C-r>"] = "actions.refresh",
+    },
+    view_options = {
+      show_hidden = true,
+    },
+    lsp_rename_autosave = true,
+    skip_confirm_for_simple_edits = true,
+    prompt_save_on_select_new_entry = false,
+  },
+  cmd = "Oil",
 }

@@ -1,16 +1,17 @@
 return {
-  'nvim-lualine/lualine.nvim',
+  "nvim-lualine/lualine.nvim",
   opts = {
     options = {
       icons_enabled = false,
-      theme = 'catppuccin',
-      component_separators = { left = '| ', right = ' |'},
-      section_separators = '',
+      theme = "catppuccin",
+      component_separators = { left = "| ", right = " |" },
+      section_separators = "",
+      disabled_filetypes = { statusline = { "startup" } },
     },
     sections = {
       lualine_c = {
         {
-          'filename',
+          "filename",
 
           -- 0: Just the filename
           -- 1: Relative path
@@ -25,6 +26,11 @@ return {
       },
     },
     extensions = {
+      "lazy",
+      "fzf",
+      "mason",
+      "oil",
+      "fugitive",
       "quickfix",
     },
   },

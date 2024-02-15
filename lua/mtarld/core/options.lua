@@ -1,6 +1,3 @@
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-
 vim.opt.undofile = true
 vim.opt.swapfile = false
 
@@ -26,15 +23,12 @@ vim.opt.wrap = false
 
 vim.o.termguicolors = true
 
-local yank_group = augroup("HighlightYank", {})
-
-autocmd('TextYankPost', {
-  group = yank_group,
+vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
     vim.highlight.on_yank({
       higroup = "ColorColumn",
-      timeout = 120,
+      timeout = 200,
     })
   end,
 })

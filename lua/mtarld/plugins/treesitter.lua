@@ -1,11 +1,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    {"nvim-treesitter/nvim-treesitter-textobjects"},
+    { "nvim-treesitter/nvim-treesitter-textobjects" },
   },
-  event = { "BufEnter" },
+  event = "BufRead",
   config = function()
-    require('nvim-treesitter.configs').setup {
+    require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "bash",
         "c",
@@ -29,7 +29,7 @@ return {
         use_languagetree = true,
       },
       indent = {
-        enable = true
+        enable = true,
       },
       textobjects = {
         select = {
@@ -52,20 +52,28 @@ return {
           include_surrounding_whitespace = function(opts)
             local qs = opts.query_string
 
-            if qs == '@function.inner' then return false
-            elseif qs == '@class.outer' then return false
-            elseif qs == '@call.outer' then return false
-            elseif qs == '@comment.outer' then return false
-            elseif qs == '@conditional.inner' then return false
-            elseif qs == '@conditional.outer' then return false
-            elseif qs == '@loop.inner' then return false
-            elseif qs == '@loop.outer' then return false
+            if qs == "@function.inner" then
+              return false
+            elseif qs == "@class.outer" then
+              return false
+            elseif qs == "@call.outer" then
+              return false
+            elseif qs == "@comment.outer" then
+              return false
+            elseif qs == "@conditional.inner" then
+              return false
+            elseif qs == "@conditional.outer" then
+              return false
+            elseif qs == "@loop.inner" then
+              return false
+            elseif qs == "@loop.outer" then
+              return false
             end
 
             return true
           end,
         },
       },
-    }
-  end
+    })
+  end,
 }

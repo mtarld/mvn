@@ -1,10 +1,10 @@
 return {
   "FooSoft/vim-argwrap",
-  cmd = { "ArgWrap" },
-  config = function ()
+  config = function()
     vim.g.argwrap_tail_comma = 1
   end,
+  cmd = "ArgWrap",
   keys = {
-    {"<leader>j", "<cmd> ArgWrap<CR>"},
+    { "<leader>j", "<CMD>ArgWrap<CR>" },
   },
 }

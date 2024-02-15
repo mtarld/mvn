@@ -4,10 +4,10 @@ return {
     "nvim-tree/nvim-web-devicons",
     { "junegunn/fzf", build = "./install --bin" },
   },
-  config = function()
+  opts = function()
     local actions = require("fzf-lua.actions")
 
-    require("fzf-lua").setup({
+    return {
       fzf_colors = {
         ["fg"] = { "fg", "CursorLine" },
         ["bg"] = { "bg", "Normal" },
@@ -47,28 +47,27 @@ return {
           hidden = "hidden",
         },
       },
-    })
+    }
   end,
-  cmd = { "FzfLua" },
+  cmd = "FzfLua",
   keys = {
-    {"<leader>.", "<cmd>FzfLua live_grep <CR>"},
-    {"<C-p>", "<cmd>FzfLua resume <CR>"},
-    {"<C-s>", "<cmd>FzfLua blines <CR>"},
-    {"<leader>ff", function ()
-      require('fzf-lua').files({
-        cwd = vim.fn.expand("%:p:h"),
-      })
-    end},
-    {"<leader> ", "<cmd>FzfLua files <CR>"},
-    {"<leader>bb", "<cmd>FzfLua buffers <CR>"},
-    {"<leader>#", "<cmd>FzfLua grep_cWORD <CR>"},
-    {"<leader>#", "<cmd>FzfLua grep_visual <CR>", mode="v"},
-    {"<leader>,", "<cmd>FzfLua lsp_finder <CR>"},
-    {"<leader>?", "<cmd>FzfLua lsp_document_diagnostics <CR>"},
-    {"<leader>cc", "<cmd>FzfLua lsp_code_actions <CR>"},
-    {"<leader>ss", "<cmd>FzfLua lsp_document_symbols <CR>"},
-    {"<leader>sS", "<cmd>FzfLua lsp_live_workspace_symbols <CR>"},
-    {"<leader>rr", "<cmd>FzfLua live_grep_resume <CR>"},
-    {"<leader>pp", "<cmd>FzfLua registers <CR>"},
+    { "<leader>.", "<CMD>FzfLua live_grep<CR>" },
+    { "<leader>.", "<CMD>FzfLua grep_visual<CR>", mode = "v" },
+    { "<C-s>", "<CMD>FzfLua blines<CR>" },
+    {
+      "<leader>lf",
+      function()
+        require("fzf-lua").files({
+          cwd = vim.fn.expand("%:p:h"),
+        })
+      end,
+    },
+    { "<leader> ", "<CMD>FzfLua files<CR>" },
+    { "<leader>lb", "<CMD>FzfLua buffers<CR>" },
+    { "<leader>ll", "<CMD>FzfLua lsp_finder<CR>" },
+    { "<leader>ld", "<CMD>FzfLua lsp_document_diagnostics<CR>" },
+    { "<leader>ca", "<CMD>FzfLua lsp_code_actions<CR>" },
+    { "<leader>ls", "<CMD>FzfLua lsp_document_symbols<CR>" },
+    { "<leader>lr", "<CMD>FzfLua registers<CR>" },
   },
 }

@@ -1,25 +1,22 @@
 vim.g.mapleader = " "
 
--- quit neovim
-vim.keymap.set("n", "<leader>qq", ":xa! <CR>")
-
 -- save file
-vim.keymap.set("n", "<leader>fs", ":w <CR>")
+vim.keymap.set("n", "<leader>fs", "<CMD>w<CR>")
 
 -- split window vertically
-vim.keymap.set("n", "<leader>/", function ()
-  vim.cmd('vsp')
-  vim.cmd('wincmd l')
+vim.keymap.set("n", "<leader>/", function()
+  vim.cmd("vsp")
+  vim.cmd("wincmd l")
 end)
 
 -- split window horizontally
-vim.keymap.set("n", "<leader>-", function ()
-  vim.cmd('sp')
-  vim.cmd('wincmd j')
+vim.keymap.set("n", "<leader>-", function()
+  vim.cmd("sp")
+  vim.cmd("wincmd j")
 end)
 
 -- close window
-vim.keymap.set("n", "<leader>x", "<C-w>q")
+vim.keymap.set("n", "<leader>0", "<C-w>q")
 
 -- rotate windows
 vim.keymap.set("n", "<leader>r", "<C-w>r")
@@ -34,7 +31,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- switch to previous buffer
-vim.keymap.set("n", "<leader>b<TAB>", function ()
+vim.keymap.set("n", "<leader>b<TAB>", function()
   local previous_buffer = require("mtarld.core.buffer").previous_buffer()
   if nil == previous_buffer then
     return
@@ -48,17 +45,6 @@ vim.keymap.set("n", "<Esc>", ":noh <CR>")
 
 -- toggle line wrap
 vim.keymap.set("n", "<leader>W", ":set wrap! <CR>")
-
--- format PHP files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "php",
-  callback = function()
-    vim.keymap.set("n", "<leader>cs", require("mtarld.core.php-cs-fixer").format, { buffer = true })
-  end,
-})
-
--- Search and replace current position word
-vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- move selected lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
