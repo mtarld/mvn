@@ -5,13 +5,16 @@ return {
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
-    {"L3MON4D3/LuaSnip"},
+    { "L3MON4D3/LuaSnip" },
   },
   config = function()
     local lspzero = require("lsp-zero")
 
     lspzero.on_attach(function(_, bufnr)
       lspzero.default_keymaps({ buffer = bufnr })
+      vim.keymap.set("n", "<leader>R", function()
+        vim.lsp.buf.rename()
+      end, { buffer = bufnr })
     end)
 
     require("mason").setup()
@@ -33,12 +36,4 @@ return {
     })
   end,
   event = "BufRead",
-  keys = {
-    {
-      "<leader>R",
-      function()
-        vim.lsp.buf.rename()
-      end,
-    },
-  },
 }

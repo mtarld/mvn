@@ -37,7 +37,9 @@ return {
     view_options = {
       show_hidden = true,
     },
-    lsp_rename_autosave = true,
+    lsp_file_methods = {
+      autosave_changes = true,
+    },
     skip_confirm_for_simple_edits = true,
     prompt_save_on_select_new_entry = false,
   },

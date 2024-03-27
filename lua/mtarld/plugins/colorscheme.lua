@@ -4,7 +4,11 @@ return {
   priority = 1000,
   opts = {},
   config = function()
-    vim.cmd.colorscheme("github_light")
+    if "true" == os.getenv("DARK_THEME") then
+      vim.cmd.colorscheme("github_dark")
+    else
+      vim.cmd.colorscheme("github_light")
+    end
   end,
   keys = {
     {
