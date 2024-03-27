@@ -29,6 +29,7 @@ return {
         "yamlls",
         "jsonls",
         "dockerls",
+        "ltex",
       },
       handlers = {
         lspzero.default_setup,
