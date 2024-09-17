@@ -15,6 +15,11 @@ vim.keymap.set("n", "<leader>-", function()
   vim.cmd("wincmd j")
 end)
 
+-- equalize windows
+vim.keymap.set("n", "<leader>=", function()
+  vim.cmd("wincmd =")
+end)
+
 -- close window
 vim.keymap.set("n", "<leader>0", "<C-w>q")
 

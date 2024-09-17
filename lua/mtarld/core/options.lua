@@ -25,6 +25,9 @@ vim.opt.wrap = false
 
 vim.o.termguicolors = true
 
+vim.o.equalalways = true
+
+-- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
@@ -32,5 +35,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
       higroup = "ColorColumn",
       timeout = 200,
     })
+  end,
+})
+
+-- equalize windows on resize
+vim.api.nvim_create_autocmd("VimResized", {
+  callback = function()
+    vim.cmd("wincmd =")
   end,
 })
