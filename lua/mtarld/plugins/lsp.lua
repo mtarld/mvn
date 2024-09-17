@@ -23,7 +23,7 @@ return {
         "lua_ls",
         "phpactor",
         "eslint",
-        "tsserver",
+        "ts_ls",
         "html",
         "cssls",
         "yamlls",
