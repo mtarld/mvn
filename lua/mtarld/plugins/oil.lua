@@ -30,7 +30,6 @@ return {
     use_default_keymaps = false,
     keymaps = {
       ["<CR>"] = "actions.select",
-      ["<leader><CR>"] = "actions.select_vsplit",
       ["<leader>p"] = "actions.preview",
       ["<C-r>"] = "actions.refresh",
     },

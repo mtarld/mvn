@@ -34,13 +34,6 @@ return {
           ["alt-a"] = "toggle-all",
         },
       },
-      actions = {
-        files = {
-          ["default"] = actions.file_edit_or_qf,
-          ["ctrl-/"] = actions.file_vsplit,
-          ["alt-q"] = actions.file_sel_to_qf,
-        },
-      },
       winopts = {
         split = "botright new",
         preview = {
@@ -52,22 +45,10 @@ return {
   cmd = "FzfLua",
   keys = {
     { "<leader>.", "<CMD>FzfLua live_grep<CR>" },
-    { "<leader>.", "<CMD>FzfLua grep_visual<CR>", mode = "v" },
-    { "<C-s>", "<CMD>FzfLua blines<CR>" },
-    {
-      "<leader>lf",
-      function()
-        require("fzf-lua").files({
-          cwd = vim.fn.expand("%:p:h"),
-        })
-      end,
-    },
     { "<leader> ", "<CMD>FzfLua files<CR>" },
     { "<leader>lb", "<CMD>FzfLua buffers<CR>" },
-    { "<leader>ll", "<CMD>FzfLua lsp_finder<CR>" },
     { "<leader>ld", "<CMD>FzfLua lsp_document_diagnostics<CR>" },
     { "<leader>ca", "<CMD>FzfLua lsp_code_actions<CR>" },
-    { "<leader>ls", "<CMD>FzfLua lsp_document_symbols<CR>" },
     { "<leader>lr", "<CMD>FzfLua registers<CR>" },
   },
 }
