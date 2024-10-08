@@ -28,6 +28,10 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     use_default_keymaps = false,
+    default_file_explorer = true,
+    buf_options = {
+      buflisted = true,
+    },
     keymaps = {
       ["<CR>"] = "actions.select",
       ["<leader>p"] = "actions.preview",
@@ -37,7 +41,7 @@ return {
       show_hidden = true,
     },
     lsp_file_methods = {
-      autosave_changes = true,
+      enabled = false,
     },
     skip_confirm_for_simple_edits = true,
     prompt_save_on_select_new_entry = false,
