@@ -4,7 +4,6 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       php = { "php_cs_fixer" },
-      javascript = { "prettier" },
     },
   },
   init = function()
