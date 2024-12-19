@@ -4,9 +4,20 @@ return {
     { "neovim/nvim-lspconfig" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
+    { "saghen/blink.cmp" },
   },
   config = function()
     local lspzero = require("lsp-zero")
+    local lspconfig = require('lspconfig')
+
+    lspconfig.lua_ls.setup(lspzero.nvim_lua_ls())
+
+    local lspconfig_defaults = lspconfig.util.default_config
+    lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+      'force',
+      lspconfig_defaults.capabilities,
+      require('blink.cmp').get_lsp_capabilities()
+    )
 
     lspzero.on_attach(function(_, bufnr)
       lspzero.default_keymaps({ buffer = bufnr })
@@ -27,7 +38,6 @@ return {
         "yamlls",
         "jsonls",
         "dockerls",
-        "ltex",
       },
       handlers = {
         lspzero.default_setup,
