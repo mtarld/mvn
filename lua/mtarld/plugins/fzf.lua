@@ -46,7 +46,6 @@ return {
   keys = {
     { "<leader>.", "<CMD>FzfLua live_grep<CR>" },
     { "<leader> ", "<CMD>FzfLua files<CR>" },
-    { "<leader>lb", "<CMD>FzfLua buffers<CR>" },
     { "<leader>ld", "<CMD>FzfLua lsp_document_diagnostics<CR>" },
     { "<leader>ca", "<CMD>FzfLua lsp_code_actions<CR>" },
     { "<leader>lr", "<CMD>FzfLua registers<CR>" },

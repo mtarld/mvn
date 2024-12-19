@@ -23,6 +23,9 @@ end)
 -- close window
 vim.keymap.set("n", "<leader>0", "<C-w>q")
 
+-- close other windows
+vim.keymap.set("n", "<leader>m", "<CMD>only<CR>")
+
 -- rotate windows
 vim.keymap.set("n", "<leader>r", "<C-w>r")
 
@@ -54,6 +57,9 @@ vim.keymap.set("n", "<leader>b<TAB>", function()
   vim.cmd("b " .. previous_buffer)
 end)
 
+-- search
+vim.keymap.set("n", "<C-s>", "<Esc>/")
+
 -- remove search highlight on escape
 vim.keymap.set("n", "<Esc>", ":noh <CR>")
 
@@ -63,3 +69,6 @@ vim.keymap.set("n", "<leader>W", ":set wrap! <CR>")
 -- move selected lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- toggle line number
+vim.keymap.set("n", "<leader>N", "<CMD>set number<CR>")
