@@ -11,6 +11,14 @@ return {
     local lspconfig = require('lspconfig')
 
     lspconfig.lua_ls.setup(lspzero.nvim_lua_ls())
+    lspconfig.phpactor.setup({
+      init_options = {
+        ['language_server_worse_reflection.inlay_hints.enable'] = true,
+        ['language_server_worse_reflection.inlay_hints.params'] = true,
+        ['language_server_worse_reflection.inlay_hints.types'] = true,
+        ['language_server_completion.trim_leading_dollar'] = true,
+      },
+    })
 
     local lspconfig_defaults = lspconfig.util.default_config
     lspconfig_defaults.capabilities = vim.tbl_deep_extend(
