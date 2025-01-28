@@ -1,11 +1,12 @@
 return {
   'saghen/blink.cmp',
-  version = 'v0.7.6',
+  version = 'v0.11.0',
   lazy = false, -- lazy loading handled internally
   dependencies =  {
     { "rafamadriz/friendly-snippets" },
     { "giuxtaposition/blink-cmp-copilot" }
   },
+  opts_extend = { "sources.default" },
   opts = {
     keymap = {
       preset = 'enter',
@@ -13,33 +14,19 @@ return {
       ['<C-k>'] = { 'select_prev', 'fallback' },
       ['<C-j>'] = { 'select_next', 'fallback' },
     },
-    highlight = {
-      -- sets the fallback highlight groups to nvim-cmp's highlight groups
-      use_nvim_cmp_as_default = true,
-    },
     sources = {
-      providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-cmp-copilot",
-          score_offset = 100,
-          async = true,
-          transform_items = function(_, items)
-            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-            local kind_idx = #CompletionItemKind + 1
-            CompletionItemKind[kind_idx] = "Copilot"
-            for _, item in ipairs(items) do
-              item.kind = kind_idx
-            end
-            return items
-          end,
-        },
-      },
-      completion = {
-        enabled_providers = { "lsp", "path", "snippets", "buffer", "copilot" },
-      },
+      cmdline = function()
+        local type = vim.fn.getcmdtype()
+
+        if type == ':' or type == '@' then
+          return { 'cmdline' }
+        end
+
+        return {}
+      end,
     },
     appearance = {
+      use_nvim_cmp_as_default = true,
       -- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
       kind_icons = {
         Copilot = "",
