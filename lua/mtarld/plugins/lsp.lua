@@ -12,6 +12,7 @@ return {
     lspconfig.lua_ls.setup(lspzero.nvim_lua_ls())
     lspconfig.phpactor.setup({
       init_options = {
+        ['language_server_php_cs_fixer.enabled'] = false,
         ['language_server_worse_reflection.inlay_hints.enable'] = true,
         ['language_server_worse_reflection.inlay_hints.params'] = true,
         ['language_server_worse_reflection.inlay_hints.types'] = true,
