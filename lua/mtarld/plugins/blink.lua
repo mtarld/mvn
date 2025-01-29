@@ -17,7 +17,7 @@ return {
       return not vim.tbl_contains({ "laika" }, vim.bo.filetype)
     end,
     sources = {
-      default = { "copilot" },
+      default = { "lsp", "path", "buffer", "copilot" },
       providers = {
         copilot = {
           name = "copilot",
