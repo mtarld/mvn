@@ -3,7 +3,6 @@ return {
   version = 'v0.11.0',
   lazy = false, -- lazy loading handled internally
   dependencies =  {
-    { "rafamadriz/friendly-snippets" },
     { "giuxtaposition/blink-cmp-copilot" }
   },
   opts_extend = { "sources.default" },
