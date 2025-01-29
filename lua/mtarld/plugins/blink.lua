@@ -14,6 +14,9 @@ return {
       ['<C-k>'] = { 'select_prev', 'fallback' },
       ['<C-j>'] = { 'select_next', 'fallback' },
     },
+    enabled = function()
+      return not vim.tbl_contains({ "laika" }, vim.bo.filetype)
+    end,
     sources = {
       cmdline = function()
         local type = vim.fn.getcmdtype()
