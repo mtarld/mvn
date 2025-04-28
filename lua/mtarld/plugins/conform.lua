@@ -11,13 +11,13 @@ return {
         end,
         append_args = function(self, ctx)
           local project_dir = self.cwd(self, ctx)
-          local config_file = '~/.config/php-cs-fixer/.php-cs-fixer.php'
+          local config_file = vim.fn.expand('~/.config/php-cs-fixer/.php-cs-fixer.php')
 
-          if vim.fn.filereadable(project_dir .. '/.php-cs-fixer.php') then
+          if vim.fn.filereadable(project_dir .. '/.php-cs-fixer.php') == 1 then
             config_file = project_dir .. '/.php-cs-fixer.php'
           end
 
-          if vim.fn.filereadable(project_dir .. '/.php-cs-fixer.dist.php') then
+          if vim.fn.filereadable(project_dir .. '/.php-cs-fixer.dist.php') == 1 then
             config_file = project_dir .. '/.php-cs-fixer.dist.php'
           end
 

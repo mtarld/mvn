@@ -79,7 +79,7 @@ Respond to user messages according to the following principles:
     end,
     cmd = { "GpCodeReview", "GpExplain", "GpContext" },
     keys = {
-      { "<leader>aa", ":GpChatToggle vsplit<CR>", mode = {"n", "i"} },
+      { "<leader>aa", ":GpChatToggle vsplit<CR>", mode = "n" },
       { "<leader>aa", ":<C-u>'<,'>GpChatPaste vsplit<CR>", mode = "v" },
       { "<leader>ai", ":<C-u>'<,'>GpImplement<CR>", mode = "v" },
       { "<leader>ar", ":<C-u>'<,'>GpRewrite<CR>", mode = "v" },
